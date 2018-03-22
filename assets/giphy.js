@@ -2,38 +2,57 @@
 
 $(document).ready(function(){
 
-//variables to hold topics and other things
+//initial array of topics
 
 
 
-            let topics = ['geckos',
-                        'turtles',
-                        'sloths',
-                        'frogs'];
-                        //console.log(topics);
+    let topics = ['geckos',
+                'turtles',
+                'sloths',
+                'frogs',
+                ''];
 
-    $("#addAnimal").on("click",function() {
-
-            let searchField = $("#animalInput").val()
-    
-
+    $("#addAnimal").on("click", function(e) {
+        e.preventDefault() //use this to prevent some form default functions
     //POWERED BY GIPHY
     // API KEY : kt3AVxl1bzJdKflIKnVDdxqLJZS6gVAQ
 
-    //get search box to work
+    //querrying API and getting search field to work
 
-            let queryURL = "https://api.giphy.com/v1/gifs/search?q=" + searchField + "&api_key=kt3AVxl1bzJdKflIKnVDdxqLJZS6gVAQ";
+            let topic = $("#animalInput").val()
+            console.log(topic);
+            let queryURL = "http://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=kt3AVxl1bzJdKflIKnVDdxqLJZS6gVAQ";
             
             $.ajax({
-                url:queryURL,
+                url: queryURL,
                 method: "GET"
-            }).then(function(response){
+            }).then(function(response) {
                 console.log(response);
+
+//append the GIF to DOM
+
+
+
+//add stop/start limit to GIFs play
+
+
+
+//create an element to display the rating
+
 
 
             });
-
-
+//append buttons
+  /*      function renderButtons() {
+           $("#animalButtons").empty();
+           for (let i = 0; i < topics.lengt; i++) {
+               let button = $("<button>");
+               button.addClass("animal-button");
+               button.attr("data-name", topics[i]);
+               button.text(topics[i]);
+               $("#animalButtons").append(button);
+           }
+        } */
 
 
     });
