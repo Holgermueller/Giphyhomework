@@ -15,6 +15,13 @@ form {
     border: 2px solid green;
 }
 
+.add-animal {
+    background-color: green;
+    color: ghostwhite;
+    padding: 5px;
+    border-radius: 15%;
+}
+
 .footer {
     position: fixed;
     text-align: center;
