@@ -1,8 +1,26 @@
 
 
+form {
+    float: right;
+}
 
+.add-an-animal {
+    font-style: italic;
+    font-weight: bold;
+}
 
+.input {
+    margin-right: 10%;
+    width: 90%;
+    border: 2px solid green;
+}
 
 .footer {
+    position: fixed;
     text-align: center;
+    padding: 6px;
+    width: 100%;
+    bottom: 0;
+    background-color: green;
+    color: ghostwhite;
 }
