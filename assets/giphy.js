@@ -20,7 +20,7 @@ $(document).ready(function(){
     //querrying API and getting search field to work
 
             let topic = $("#animalInput").val()
-            console.log(topic);
+            //console.log(topic);
             let queryURL = "http://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=kt3AVxl1bzJdKflIKnVDdxqLJZS6gVAQ";
             
             $.ajax({
@@ -28,6 +28,14 @@ $(document).ready(function(){
                 method: "GET"
             }).then(function(response) {
                 console.log(response);
+                for ( let j = 0 ; j < response.data.length ; j++) {
+                    const animalTemplate = `<div class="pen">
+                    <p class="rating"> Rating: ${response.data[j].rating}</p>
+                    <img src="${response.data[j].images.original.url}" class="jpeg">  </img>
+                    </div>`;
+
+                    $("#animals").append(animalTemplate);
+                }
 
 //append the GIF to DOM
 
