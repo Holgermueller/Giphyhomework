@@ -1,8 +1,7 @@
 
 
-form {
-    float: right;
-    margin-top: 2%;
+.animal-form {
+    margin: 2% 0 2% 2%;
 }
 
 .add-an-animal {
@@ -16,20 +15,36 @@ form {
 }
 
 .input {
+    margin-top: 2%;
     margin-right: 10%;
+    padding: 1% 0;
     width: 90%;
     border: 2px solid green;
 }
 
 .add-animal {
+    margin-top: 2%;
     background-color: green;
     color: ghostwhite;
     padding: 5px;
     border-radius: 15%;
 }
 
+.animal-button {
+    margin: 2px 2px;
+}
+
+.animals {
+    margin-left: 5%;
+}
+
+.rating {
+    font-weight: bold;
+    margin: 2% 0 1%;
+}
+
 .footer {
-    position: fixed;
+    position: inherit;
     text-align: center;
     padding: 6px;
     width: 100%;
