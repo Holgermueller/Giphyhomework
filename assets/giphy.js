@@ -11,14 +11,17 @@ $(document).ready(function(){
 
     //append buttons for array
 
+function makeBtns() {
+
     for (let i = 0; i < topics.length; i++) {
         const animalBtns = $("<button>");
             animalBtns.addClass("animal-btn");
-            animalBtns.attr("anml-name", topics[i]);
+            animalBtns.attr("anml-name");
             animalBtns.text(topics[i]);
             animalBtns.val(topics[i]);
             $("#animalButtons").append(animalBtns);
     }
+}
 
     //POWERED BY GIPHY
     // API KEY : kt3AVxl1bzJdKflIKnVDdxqLJZS6gV
@@ -28,7 +31,7 @@ $(document).ready(function(){
             e.preventDefault()
             $("#animals").empty();
 
-                let queryURL = "http://api.giphy.com/v1/gifs/search?q=" + topics + "&api_key=kt3AVxl1bzJdKflIKnVDdxqLJZS6gVAQ";
+            let queryURL = "http://api.giphy.com/v1/gifs/search?q=" + topics + "&api_key=kt3AVxl1bzJdKflIKnVDdxqLJZS6gVAQ";
 
                 $.ajax({
                     url: queryURL,
@@ -47,15 +50,15 @@ $(document).ready(function(){
                 })
         });
 
-    
-
     //append a new button when a new animal is searched
 
     $("#addAnimal").on("click", function(e) {
         e.preventDefault() //use this to prevent some form default functions
-        //use search field to append more buttons
-        let topic = $("animalInput").val();
-               topic.push(topic);
+        $("#animalButtons").empty();
+        let topic = $("#animalInput").val().trim();
+            console.log(topic);
+            topics.push(topic);
+            makeBtns();
     });
 
 
