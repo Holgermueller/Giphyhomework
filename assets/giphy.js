@@ -53,14 +53,9 @@ $(document).ready(function(){
 
     $("#addAnimal").on("click", function(e) {
         e.preventDefault() //use this to prevent some form default functions
-        $("#animals").empty();
         //use search field to append more buttons
-        let newBtn = $("animalInput").val();
-                newBtn
-                newBtn.attr("anml-name");
-                newBtn.text("#animals");
-                newBtn.val(topics[i]);
-                $("#animalButtons").append(newBtn);
+        let topic = $("animalInput").val();
+               topic.push(topic);
     });
 
 

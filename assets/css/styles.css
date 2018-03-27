@@ -30,8 +30,13 @@
     border-radius: 15%;
 }
 
-.animal-button {
-    margin: 2px 2px;
+.animal-btn {
+    margin: 2% 1%;
+    background-color: green;
+    color: ghostwhite;
+    padding: 5px;
+    border-radius: 50%;
+    width: 9%;
 }
 
 .animals {
