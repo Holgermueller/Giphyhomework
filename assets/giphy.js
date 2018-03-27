@@ -15,13 +15,12 @@ $(document).ready(function(){
             for (let i = 0; i < topics.length; i++) {
                 const animalBtns = $("<button>");
                     animalBtns.addClass("animal-btn");
-                    animalBtns.attr("anml-name");
+                    animalBtns.attr("anml-name", topics[i]);
                     animalBtns.text(topics[i]);
                     animalBtns.val(topics[i]);
                     $("#animalButtons").append(animalBtns);
-            }
+            }        
         }
-
     //append a new button when a new animal is searched
 
     $("#addAnimal").on("click", function(e) {
@@ -64,9 +63,6 @@ $(document).ready(function(){
         });
 
     });
-
-
-
 
 
 //add stop/start limit to GIFs play
