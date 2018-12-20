@@ -48,21 +48,23 @@ $(document).ready(function(){
                 $("#animals").empty();
                 for ( let j = 0 ; j < response.data.length ; j++) {
                     const animalTemplate = `<div class="pen">
-                    <p class="rating"> Rating: ${response.data[j].rating}</p>
-                    <img src="${response.data[j].images.original.url}" class="jpeg">  </img>
+                    <p class="rating"> Rating: ${(response.data[j].rating).toUpperCase()}</p>
+                    <img class="jpeg" data-jpeg_src="${response.data[j].images.original.url}" src="${response.data[j].images.downsized_still.url}" alt="gif">  </img>
                     </div>`;           
                     $("#animals").append(animalTemplate);
                 }    
             })
     });
 
-
-
-
-//add stop/start limit to GIFs play
-
-
-
+    $(() => {
+        $('img').each( e => {
+            let src = $(e).attr('src');
+            $(e).hover(() => {
+                $(this).attr('src', src.replace(('.jpeg', '_anim.jpeg'));
+                )
+            })
+        })
+    })
 
 });
     
