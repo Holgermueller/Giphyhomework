@@ -2,13 +2,10 @@
 
 $(document).ready(function(){
 
-    //initial array of topics
     let topics = ['geckos',
                 'turtles',
                 'sloths',
                 'frogs'];
-
-    //append buttons for array
 
     function makeBtns(){
         for (let i = 0; i < topics.length; i++) {
@@ -22,10 +19,8 @@ $(document).ready(function(){
     }
     makeBtns();
 
-    //append a new button when a new animal is searched
-
     $("#addAnimal").on("click", function(e) {
-        e.preventDefault() //use this to prevent some form default functions
+        e.preventDefault();
         $("#animalButtons").empty();
         let topic = $("#animalInput").val().trim();
             console.log(topic);
@@ -41,31 +36,22 @@ $(document).ready(function(){
         e.preventDefault()
         $("#animals").empty();
 
-        // when button is created, store the topic on it somehow (.data())
         let data = ($(this).attr("anml-name"));
-
-        // retrieve that topic and store it in a variable called topic
 
         let topic = data;
 
-        let queryURL = "http://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=kt3AVxl1bzJdKflIKnVDdxqLJZS6gVAQ";
-        //console.log(topic);
+        let queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=kt3AVxl1bzJdKflIKnVDdxqLJZS6gVAQ";
             $.ajax({
                 url: queryURL,
                 method: "GET"
             }).then(function(response) {
-                //console.log(response);
-                //create DIV to append rating
-                //create DIV to append GIFs
                 $("#animals").empty();
                 for ( let j = 0 ; j < response.data.length ; j++) {
                     const animalTemplate = `<div class="pen">
                     <p class="rating"> Rating: ${response.data[j].rating}</p>
                     <img src="${response.data[j].images.original.url}" class="jpeg">  </img>
-                    </div>`;
-                    //append the GIF to DOM            
+                    </div>`;           
                     $("#animals").append(animalTemplate);
-                    //console.log(animalTemplate);
                 }    
             })
     });
