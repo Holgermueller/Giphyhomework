@@ -1,7 +1,17 @@
-
+.header {
+    position: fixed;
+    color: white;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 3em;
+    background-color: green;
+    width: 100%;
+    top: 0;
+    right: 0;
+}
 
 .animal-form {
-    margin: 2% 0 2% 2%;
+    margin: 8% 0 2% 2%;
 }
 
 .add-an-animal {
@@ -19,7 +29,16 @@
     margin-right: 10%;
     padding: 1% 0;
     width: 90%;
+    border-radius: 15px;
     border: 2px solid green;
+}
+
+::placeholder {
+    padding-left: 4px;
+}
+
+hr {
+    right: 0;
 }
 
 .add-animal {
