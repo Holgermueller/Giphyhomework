@@ -1,13 +1,13 @@
 'use strict';
 
-$(document).ready(function(){
+$(document).ready(() => {
 
     let topics = ['geckos',
                 'turtles',
                 'sloths',
                 'frogs'];
 
-    function makeBtns(){
+    function makeBtns() {
         for (let i = 0; i < topics.length; i++) {
             const animalBtns = $("<button>");
                 animalBtns.addClass("animal-btn");
@@ -19,7 +19,7 @@ $(document).ready(function(){
     }
     makeBtns();
 
-    $("#addAnimal").on("click", function(e) {
+    $("#addAnimal").on("click", e => {
         e.preventDefault();
         $("#animalButtons").empty();
         let topic = $("#animalInput").val().trim();
@@ -37,14 +37,12 @@ $(document).ready(function(){
         $("#animals").empty();
 
         let data = ($(this).attr("anml-name"));
-
         let topic = data;
-
         let queryURL = "https://api.giphy.com/v1/gifs/search?q=" + topic + "&api_key=kt3AVxl1bzJdKflIKnVDdxqLJZS6gVAQ";
             $.ajax({
                 url: queryURL,
                 method: "GET"
-            }).then(function(response) {
+            }).then(response => {
                 $("#animals").empty();
                 for ( let j = 0 ; j < response.data.length ; j++) {
                     const animalTemplate = `<div class="pen">
@@ -56,15 +54,14 @@ $(document).ready(function(){
             })
     });
 
-    $(() => {
-        $('img').each( e => {
-            let src = $(e).attr('src');
-            $(e).hover(() => {
-                $(this).attr('src', src.replace(('.jpeg', '_anim.jpeg'));
-                )
-            })
-        })
-    })
+    $(document).on('mouseenter', '.jpeg', function() {
+        $(this).data('img_src', $(this).attr('src'));
+        $(this).attr('src', $(this).data('jpeg_src'));
+    });
+
+    $(document).on('mouseleave', '.jpeg', function() {
+        $(this).attr('src', $(this).data('img_src'));
+    });
 
 });
     
