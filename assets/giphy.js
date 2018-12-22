@@ -55,7 +55,19 @@ $(document).ready(() => {
                     </div>
                     </div>`;           
                     $("#animals").append(animalTemplate);
-                }    
+                }
+                $(document).on('click', '#favorite', function() {
+                    for ( let j = 0 ; j < response.data.length ; j++) {
+                        const favoriteAnimalTemplate = `<div clas=""grid-item>
+                        <p class="rating"> Rating: ${(response.data[j].rating).toUpperCase()}</p>
+                        <img class="jpeg" data-jpeg_src="" src="" alt="gif">
+                                    <div class="button-container">
+                                    <button id="remove" class="remove-button">Remove</Button>
+                                    </div>
+                        </div>`;
+                        $('#favorite-gifs').append(favoriteAnimalTemplate);
+                    }
+                });
             })
     });
 
@@ -69,18 +81,6 @@ $(document).ready(() => {
     });
 
     const faveGifs = JSON.parse(localStorage.getItem('gifs')) || [];
-
-    $(document).on('click', '#favorite', function() {
-        console.log('click');
-        const favoriteAnimalTemplate = `<div clas=""grid-item>
-        <p class="rating"> Rating: </p>
-        <img class="jpeg" data-jpeg_src="" src="" alt="gif">
-                    <div class="button-container">
-                    <button id="remove" class="remove-button">Remove</Button>
-                    </div>
-        </div>`;
-        $('#favorite-gifs').append(favoriteAnimalTemplate);
-    });
 
 });
     

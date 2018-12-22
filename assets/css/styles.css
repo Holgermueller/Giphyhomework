@@ -63,7 +63,7 @@ hr {
 }
 
 .add-animal {
-    margin: 2% 0 2%;
+    margin: 2% 0;
     background-color: green;
     color: ghostwhite;
     padding: 5px;
@@ -97,8 +97,9 @@ hr {
     border-radius: 15px;
 }
 
+.faves,
 .animals {
-    margin: 5% 2% 5%;
+    margin: 5% 2% 46%;
 }
 
 .rating {
