@@ -16,26 +16,34 @@
 <h1 class="header">The GIF Menagerie</h1>
 
 <!--form for getting gifs-->
-<form id="animalForm" class="animal-form">
+<section class="form-and-buttons">
+    <form id="animalForm" class="animal-form">
 
-    <label for="animal input" class="add-an-animal">Add an animal</label>
-    <br>
-    <input type="text" id="animalInput" class="input" placeholder="Enter the name of the animal you'd like to see...">
-    <br>
-    <input type="submit" name="addAnimal" id="addAnimal" class="add-animal">
+        <label for="animal input" class="add-an-animal">Add an animal</label>
+        <br>
+        <input type="text" id="animalInput" class="input" placeholder="Enter the name of the animal you'd like to see...">
+        <br>
+        <input type="submit" name="addAnimal" id="addAnimal" class="add-animal">
+    
+    </form>
+    <hr>
+    <!--buttons will go here-->
+    <div id="animalButtons">
+    
+    </div>
+</section>
 
-</form>
-<hr>
-<!--buttons will go here-->
-<div id="animalButtons">
-
-</div>
 <hr>
 <!--GIFs will go here-->
-<div id="animals" class="animals grid-container">
+<section class="search-results">
+    <h3 class="section-header">Search results:</h3>
+    <div id="animals" class="animals grid-container"></div>
+</section>
 
-</div>
-
+<section class="favorites" id="favorites">
+    <h3 class="section-header">Favorites!</h3>
+    <div id="favorite-gifs" class="faves grid-container"></div>
+</section>
 
 <footer class="footer">&copy; 2018 Holger Mueller</footer>
 

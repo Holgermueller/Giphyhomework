@@ -43,11 +43,16 @@ $(document).ready(() => {
                 url: queryURL,
                 method: "GET"
             }).then(response => {
+                console.log(response);
                 $("#animals").empty();
                 for ( let j = 0 ; j < response.data.length ; j++) {
                     const animalTemplate = `<div class="grid-item">
                     <p class="rating"> Rating: ${(response.data[j].rating).toUpperCase()}</p>
-                    <img class="jpeg" data-jpeg_src="${response.data[j].images.original.url}" src="${response.data[j].images.downsized_still.url}" alt="gif">  </img>
+                    <img class="jpeg" data-jpeg_src="${response.data[j].images.downsized_medium.url}" src="${response.data[j].images.downsized_still.url}" alt="gif">
+                    <div class="button-container">
+                    <a href="${response.data[j].images.original.webp}" download><button id="download" class="download-button">Download</Button></a>
+                    <button id="favorite" class="favorite-button">Favorite</Button>
+                    </div>
                     </div>`;           
                     $("#animals").append(animalTemplate);
                 }    

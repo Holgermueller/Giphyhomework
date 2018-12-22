@@ -8,10 +8,23 @@
     width: 100%;
     top: 0;
     right: 0;
+    padding: 3px;
+}
+
+.section-header {
+    text-align: center;
+    background-color: #79d279;
+    font-size: 1.5em;
+    padding: 2px;
+    border-radius: 15px;
+}
+
+.form-and-buttons {
+    text-align: center;
 }
 
 .animal-form {
-    margin: 8% 0 2% 2%;
+    margin: 10% 0 2% 2%;
 }
 
 .add-an-animal {
@@ -66,14 +79,22 @@ hr {
     width: 9%;
 }
 
+#animalButtons {
+    text-align: center;
+}
+
 .grid-container {
     display: grid;
     grid-template-columns: auto auto auto;
+    grid-column-gap: 2%;
+    grid-row-gap: 2%;
     padding: 10px;
 }
 
 .grid-item {
     text-align: center;
+    background-color:  #f0f0f5;
+    border-radius: 15px;
 }
 
 .animals {
@@ -85,12 +106,30 @@ hr {
     margin: 2% 0 1%;
 }
 
-.footer {
-    position: inherit;
+.button-container {
     text-align: center;
-    padding: 6px;
+    display: inline-flex;
+}
+
+.favorite-button,
+.download-button {
+    background-color: #e6ffe6;
+    border-radius: 15px;
+    font-style: bold;
+}
+
+.favorite-button:hover,
+.download-button:hover {
+    background-color: aqua;
+}
+
+.footer {
+    position: fixed;
+    text-align: center;
+    padding: 6px 0;
     width: 100%;
     bottom: 0;
+    left: 0;
     background-color: green;
     color: ghostwhite;
 }
