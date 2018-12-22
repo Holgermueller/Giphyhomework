@@ -111,6 +111,7 @@ hr {
     display: inline-flex;
 }
 
+.remove-button,
 .favorite-button,
 .download-button {
     background-color: #e6ffe6;
@@ -118,6 +119,7 @@ hr {
     font-style: bold;
 }
 
+.remove-button:hover,
 .favorite-button:hover,
 .download-button:hover {
     background-color: aqua;

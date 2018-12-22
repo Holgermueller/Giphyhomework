@@ -50,7 +50,7 @@ $(document).ready(() => {
                     <p class="rating"> Rating: ${(response.data[j].rating).toUpperCase()}</p>
                     <img class="jpeg" data-jpeg_src="${response.data[j].images.downsized_medium.url}" src="${response.data[j].images.downsized_still.url}" alt="gif">
                     <div class="button-container">
-                    <a href="${response.data[j].images.original.webp}" download><button id="download" class="download-button">Download</Button></a>
+                    <a href="${response.data[j].source}" download><button id="download" class="download-button">Download</Button></a>
                     <button id="favorite" class="favorite-button">Favorite</Button>
                     </div>
                     </div>`;           
@@ -66,6 +66,20 @@ $(document).ready(() => {
 
     $(document).on('mouseleave', '.jpeg', function() {
         $(this).attr('src', $(this).data('img_src'));
+    });
+
+    const faveGifs = JSON.parse(localStorage.getItem('gifs')) || [];
+
+    $(document).on('click', '#favorite', function() {
+        console.log('click');
+        const favoriteAnimalTemplate = `<div clas=""grid-item>
+        <p class="rating"> Rating: </p>
+        <img class="jpeg" data-jpeg_src="" src="" alt="gif">
+                    <div class="button-container">
+                    <button id="remove" class="remove-button">Remove</Button>
+                    </div>
+        </div>`;
+        $('#favorite-gifs').append(favoriteAnimalTemplate);
     });
 
 });
