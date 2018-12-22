@@ -8,16 +8,18 @@ $(document).ready(() => {
                 'frogs'];
 
     function makeBtns() {
-        for (let i = 0; i < topics.length; i++) {
+        $.map(topics, topic => {
             const animalBtns = $("<button>");
                 animalBtns.addClass("animal-btn");
-                animalBtns.attr("anml-name", topics[i]);
-                animalBtns.text(topics[i]);
-                animalBtns.val(topics[i]);
+                animalBtns.attr("anml-name", topic);
+                animalBtns.text(topic);
+                animalBtns.val(topic);
                 $("#animalButtons").append(animalBtns);
-        }        
+        });     
     }
     makeBtns();
+
+    const faveGifs = JSON.parse(localStorage.getItem('faveGifs')) || [];
 
     $("#addAnimal").on("click", e => {
         e.preventDefault();
@@ -29,8 +31,6 @@ $(document).ready(() => {
         });
 
     //POWERED BY GIPHY
-    // API KEY : kt3AVxl1bzJdKflIKnVDdxqLJZS6gV
-    //querrying API and getting search field to pull up GIFs from array
 
     $(document).on("click", '.animal-btn', function(e) {
         e.preventDefault()
@@ -43,7 +43,7 @@ $(document).ready(() => {
                 url: queryURL,
                 method: "GET"
             }).then(response => {
-                console.log(response);
+                //console.log(response);
                 $("#animals").empty();
                 for ( let j = 0 ; j < response.data.length ; j++) {
                     const animalTemplate = `<div class="grid-item">
@@ -56,19 +56,24 @@ $(document).ready(() => {
                     </div>`;           
                     $("#animals").append(animalTemplate);
                 }
+
                 $(document).on('click', '#favorite', function() {
                     for ( let j = 0 ; j < response.data.length ; j++) {
                         const favoriteAnimalTemplate = `<div clas=""grid-item>
                         <p class="rating"> Rating: ${(response.data[j].rating).toUpperCase()}</p>
-                        <img class="jpeg" data-jpeg_src="" src="" alt="gif">
+                        <img class="jpeg" data-jpeg_src="${response.data[j].images.downsized_medium.url}" src="${response.data[j].images.downsized_still.url}" alt="gif">
                                     <div class="button-container">
                                     <button id="remove" class="remove-button">Remove</Button>
                                     </div>
                         </div>`;
                         $('#favorite-gifs').append(favoriteAnimalTemplate);
+                        localStorage.setItem('faveGifs', JSON.stringify(faveGifs))
                     }
                 });
-            })
+
+                
+
+            });
     });
 
     $(document).on('mouseenter', '.jpeg', function() {
@@ -80,7 +85,6 @@ $(document).ready(() => {
         $(this).attr('src', $(this).data('img_src'));
     });
 
-    const faveGifs = JSON.parse(localStorage.getItem('gifs')) || [];
 
 });
     
