@@ -25,7 +25,6 @@ $(document).ready(() => {
         e.preventDefault();
         $("#animalButtons").empty();
         let topic = $("#animalInput").val().trim();
-            console.log(topic);
             topics.push(topic);
             makeBtns();
         });
@@ -45,17 +44,17 @@ $(document).ready(() => {
             }).then(response => {
                 //console.log(response);
                 $("#animals").empty();
-                for ( let j = 0 ; j < response.data.length ; j++) {
+                $.map(response.data, gif => {
                     const animalTemplate = `<div class="grid-item">
-                    <p class="rating"> Rating: ${(response.data[j].rating).toUpperCase()}</p>
-                    <img class="jpeg" data-jpeg_src="${response.data[j].images.downsized_medium.url}" src="${response.data[j].images.downsized_still.url}" alt="gif">
+                    <p class="rating"> Rating: ${(gif.rating).toUpperCase()}</p>
+                    <img class="jpeg" data-jpeg_src="${gif.images.downsized_medium.url}" src="${gif.images.downsized_still.url}" alt="gif">
                     <div class="button-container">
-                    <a href="${response.data[j].source}" download><button id="download" class="download-button">Download</Button></a>
+                    <a href="${gif.source}" download><button id="download" class="download-button">Download</Button></a>
                     <button id="favorite" class="favorite-button">Favorite</Button>
                     </div>
                     </div>`;           
                     $("#animals").append(animalTemplate);
-                }
+                })
 
                 $(document).on('click', '#favorite', function() {
                     for ( let j = 0 ; j < response.data.length ; j++) {
