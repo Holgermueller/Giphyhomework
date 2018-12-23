@@ -17,11 +17,10 @@
 
 <!--form for getting gifs-->
 <section class="form-and-buttons">
-    <form id="animalForm" class="animal-form">
-
+    <form id="animalForm" class="animal-form" method="POST">
         <label for="animal input" class="add-an-animal">Add an animal</label>
         <br>
-        <input type="text" id="animalInput" class="input" placeholder="Enter the name of the animal you'd like to see...">
+        <input type="text" id="animalInput" class="input" name="animalToSearch" placeholder="Enter the name of the animal you'd like to see..." required>
         <br>
         <input type="submit" name="addAnimal" id="addAnimal" class="add-animal">
     
