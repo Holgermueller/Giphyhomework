@@ -54,19 +54,25 @@ $(document).ready(() => {
                     $("#animals").append(animalTemplate);
                 });
 
-                $(document).on('click', '#favorite', () => {
-                    const faveGifs = JSON.parse(localStorage.getItem('faveGifs')) || [];
+                // $(document).on('click', '#favorite', () => {
+                //     const faveGifs = JSON.parse(localStorage.getItem('faveGifs')) || [];
                     
-                        const favoriteAnimalTemplate = `<div clas=""grid-item>
-                        <p class="rating"> Rating: </p>
-                        <img class="jpeg" data-jpeg_src="" src="" alt="gif">
-                                    <div class="button-container">
-                                    <button id="remove" class="remove-button">Remove</Button>
-                                    </div>
-                        </div>`;
-                        $('#favorite-gifs').append(favoriteAnimalTemplate);
-                        localStorage.setItem('faveGifs', JSON.stringify(faveGifs))
+                //         const favoriteAnimalTemplate = `<div clas=""grid-item>
+                //         <p class="rating"> Rating: </p>
+                //         <img class="jpeg" data-jpeg_src="" src="" alt="gif">
+                //                     <div class="button-container">
+                //                     <button id="remove" class="remove-button">Remove</Button>
+                //                     </div>
+                //         </div>`;
+                //         $(favoriteAnimalTemplate).clone().append('#favorite-gifs');
+                //         localStorage.setItem('faveGifs', JSON.stringify(faveGifs))
+                // });
+
+                $(document).on('click', '#favorite', () => {
+                    console.log('click');
+                    $('.grid-item').clone().appendTo('#favorite-gifs');
                 });
+
             });
     });
 
