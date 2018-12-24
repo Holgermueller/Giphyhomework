@@ -44,12 +44,14 @@ $(document).ready(() => {
                 $("#animals").empty();
                 $.map(response.data, gif => {
                     const animalTemplate = `<div class="grid-item">
-                    <p class="rating"> Rating: ${(gif.rating).toUpperCase()}</p>
-                    <img class="jpeg" data-jpeg_src="${gif.images.downsized_medium.url}" src="${gif.images.downsized_still.url}" alt="gif">
-                    <div class="button-container">
-                    <a href="${gif.source}" download><button id="download" class="download-button">Download</Button></a>
-                    <button id="favorite" class="favorite-button">Favorite</Button>
+                    <div id="singleGif">
+                        <p class="rating"> Rating: ${(gif.rating).toUpperCase()}</p>
+                        <img class="jpeg" data-jpeg_src="${gif.images.downsized_medium.url}" src="${gif.images.downsized_still.url}" alt="gif">
                     </div>
+                        <div class="button-container">
+                            <a href="${gif.source}" download><button id="download" class="download-button">Download</Button></a>
+                            <button id="favorite" class="favorite-button">Favorite</Button>
+                        </div>
                     </div>`;           
                     $("#animals").append(animalTemplate);
                 });
@@ -57,7 +59,7 @@ $(document).ready(() => {
                 // $(document).on('click', '#favorite', () => {
                 //     const faveGifs = JSON.parse(localStorage.getItem('faveGifs')) || [];
                     
-                //         const favoriteAnimalTemplate = `<div clas=""grid-item>
+                //         const favoriteAnimalTemplate = `<div class="grid-item">
                 //         <p class="rating"> Rating: </p>
                 //         <img class="jpeg" data-jpeg_src="" src="" alt="gif">
                 //                     <div class="button-container">
@@ -69,8 +71,12 @@ $(document).ready(() => {
                 // });
 
                 $(document).on('click', '#favorite', () => {
-                    console.log('click');
-                    $('.grid-item').clone().appendTo('#favorite-gifs');
+                    $('.grid-item').clone()
+                        .append(`<div class="removal-button-container">
+                        <button id="remove" class="remove-button">Remove</Button>
+                        </div>`)
+                        .appendTo('#favorite-gifs');
+                    $('div').remove('.button-container');
                 });
 
             });
