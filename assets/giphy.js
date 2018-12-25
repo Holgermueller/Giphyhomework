@@ -5,7 +5,8 @@ $(document).ready(() => {
     let topics = ['geckos',
                 'turtles',
                 'sloths',
-                'frogs'];
+                'frogs',
+                'rabbits'];
 
     function makeBtns() {
         $.map(topics, topic => {
@@ -43,42 +44,38 @@ $(document).ready(() => {
                 //console.log(response);
                 $("#animals").empty();
                 $.map(response.data, gif => {
+                    //console.log(gif.id);
                     const animalTemplate = `<div class="grid-item">
-                    <div id="singleGif">
+                    <div id="singleGif" data-index="${gif.id}">
                         <p class="rating"> Rating: ${(gif.rating).toUpperCase()}</p>
                         <img class="jpeg" data-jpeg_src="${gif.images.downsized_medium.url}" src="${gif.images.downsized_still.url}" alt="gif">
                     </div>
                         <div class="button-container">
                             <a href="${gif.source}" download><button id="download" class="download-button">Download</Button></a>
-                            <button id="favorite" class="favorite-button">Favorite</Button>
+                            <input type="submit" id="favorite" class="favorite-button" value="Favorite" onclick="showIndex(this)">
                         </div>
                     </div>`;           
                     $("#animals").append(animalTemplate);
+
+                    let favoriteGifs = JSON.parse(localStorage.getItem('favoriteGifsArray'));
+                    if(!Array.isArray(favoriteGifs)){
+                        favoriteGifs = [];
+                    }
+
+                    function putFavoritesOnPage() {
+                        $('#favorite-gifs').empty();
+                        let checkFavoriteGifsList = JSON.parse(localStorage.getItem('favoriteGifsArray'));
+                        if(!Array.isArray(checkFavoriteGifsList)){
+                            checkFavoriteGifsList = [];
+                        }
+                    }
+
+                    function showIndex(gif) {
+                        let gifIndex = gif.getAttribute("data-index");
+                        console.log(gifIndex);
+                    }
+
                 });
-
-                // $(document).on('click', '#favorite', () => {
-                //     const faveGifs = JSON.parse(localStorage.getItem('faveGifs')) || [];
-                    
-                //         const favoriteAnimalTemplate = `<div class="grid-item">
-                //         <p class="rating"> Rating: </p>
-                //         <img class="jpeg" data-jpeg_src="" src="" alt="gif">
-                //                     <div class="button-container">
-                //                     <button id="remove" class="remove-button">Remove</Button>
-                //                     </div>
-                //         </div>`;
-                //         $(favoriteAnimalTemplate).clone().append('#favorite-gifs');
-                //         localStorage.setItem('faveGifs', JSON.stringify(faveGifs))
-                // });
-
-                $(document).on('click', '#favorite', () => {
-                    $('.grid-item').clone()
-                        .append(`<div class="removal-button-container">
-                        <button id="remove" class="remove-button">Remove</Button>
-                        </div>`)
-                        .appendTo('#favorite-gifs');
-                    $('div').remove('.button-container');
-                });
-
             });
     });
 
