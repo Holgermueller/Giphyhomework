@@ -55,8 +55,8 @@ $(document).ready(() => {
                     let favoriteButton = $("<input type='submit' value='Favorite'>").addClass("favorite-button").attr("id", "favorite").attr('data-index', gifID);
 
                     $("#animals").append(gridItem);
-                    $(gridItem).append(imgDIV);
-                    $(imgDIV).append(rating);
+                    gridItem.append(imgDIV);
+                    imgDIV.append(rating);
                     downloadLink.append(downloadButton);
                     buttonContainer.append(downloadLink).append(favoriteButton);
                     imgDIV.append(gifIMG).append(buttonContainer);
@@ -67,18 +67,29 @@ $(document).ready(() => {
                     console.log(faveGifs);
                     let faveGif = $(this).data('index');
                     faveGifs.push(faveGif);
-                    //populateFaves();
                     localStorage.setItem('faveGifs', JSON.stringify(faveGifs));
+                    populateFaves();
                 });
-
-                // function populateFaves() {
-
-                // }
-
-                
-                $("#favoriteGifs").append(faveGifs);
             });
     });
+
+    let faveGifRating = JSON.parse(localStorage.getItem('faveGifs'));
+    console.log(faveGifRating);
+
+    function populateFaves() {
+        $.map(faveGifRating, faveGif => {
+            let gridItem = $('<div>').addClass("grid-item");
+            let faveDiv = $("<div>").addClass("fave-gif");
+            let faveRating = $("<p class='rating'>Rating: " + faveGifRating + "</p>");
+            let removeButton = $("<button>").addClass("remove-button").attr("id", "remove").text("Remove");
+
+            $("#favoriteGifs").append(gridItem);
+            gridItem.append(faveDiv);
+            faveDiv.append(faveGif);
+            faveDiv.append(removeButton);
+        });
+    }
+    populateFaves();
 
     $(document).on('mouseenter', '.jpeg', function() {
         $(this).data('img_src', $(this).attr('src'));
@@ -88,5 +99,11 @@ $(document).ready(() => {
     $(document).on('mouseleave', '.jpeg', function() {
         $(this).attr('src', $(this).data('img_src'));
     });
+
+    $(document).on('click', '#remove', () => {
+        console.log("click");
+        localStorage.removeItem('faveGifs');
+    });
+
 });
     
