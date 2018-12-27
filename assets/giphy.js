@@ -1,7 +1,6 @@
 'use strict';
 
 $(document).ready(() => {
-
     let topics = ['geckos',
                 'turtles',
                 'sloths',
@@ -29,7 +28,6 @@ $(document).ready(() => {
         });
 
     //POWERED BY GIPHY
-
     $(document).on("click", '.animal-btn', function(e) {
         e.preventDefault()
         $("#animals").empty();
@@ -41,19 +39,21 @@ $(document).ready(() => {
                 url: queryURL,
                 method: "GET"
             }).then(response => {
-                console.log(response);
+                console.log(response.data);
                 $("#animals").empty();
                 $.map(response.data, gif => {
                     let gifID = gif.id;
-                    //console.log(gif.id);
                     let gridItem = $('<div>').addClass("grid-item");
                     let imgDIV = $("<div>").addClass("singleGif");
                     let rating = $(`<p class="rating">Rating: ${(gif.rating).toUpperCase()}</p>`);
-                    let gifIMG = $("<img>").addClass("jpeg").attr('src', gif.images.downsized_still.url).attr('data-jpeg_src', gif.images.downsized_medium.url);
+                    let gifIMG = $("<img>").addClass("jpeg")
+                        .attr('src', gif.images.downsized_still.url)
+                        .attr('data-jpeg_src', gif.images.downsized_medium.url);
+                        // .attr('data-index', gifID);
                     let buttonContainer = $("<div>").addClass("button-container");
                     let downloadLink = $('<a download>').attr('target', '_blank').attr("href", gif.images.original.url);
                     let downloadButton = $('<button>').addClass('download-button').text("Download");
-                    let favoriteButton = $("<input type='submit' value='Favorite'>").addClass("favorite-button");
+                    let favoriteButton = $("<input type='submit' value='Favorite'>").addClass("favorite-button").attr("id", "favorite").attr('data-index', gifID);
 
                     $("#animals").append(gridItem);
                     $(gridItem).append(imgDIV);
@@ -61,11 +61,11 @@ $(document).ready(() => {
                     downloadLink.append(downloadButton);
                     buttonContainer.append(downloadLink).append(favoriteButton);
                     imgDIV.append(gifIMG).append(buttonContainer);
+                });
 
-                    $(document).on('click', '#favorite', () => {
-                        // console.log(response.data);
-                    });
-
+                let gifID = response.data;
+                $(document).on('click', '#favorite', function() {
+                    console.log($(this).data('index'));
                 });
             });
     });
@@ -78,6 +78,5 @@ $(document).ready(() => {
     $(document).on('mouseleave', '.jpeg', function() {
         $(this).attr('src', $(this).data('img_src'));
     });
-
 });
     
