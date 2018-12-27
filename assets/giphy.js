@@ -64,11 +64,19 @@ $(document).ready(() => {
 
                 let faveGifs = JSON.parse(localStorage.getItem('faveGifs')) || [];
                 $(document).on('click', '#favorite', function() {
-                    console.log($(this).data('index'));
+                    console.log(faveGifs);
                     let faveGif = $(this).data('index');
                     faveGifs.push(faveGif);
+                    //populateFaves();
                     localStorage.setItem('faveGifs', JSON.stringify(faveGifs));
                 });
+
+                // function populateFaves() {
+
+                // }
+
+                
+                $("#favoriteGifs").append(faveGifs);
             });
     });
 
