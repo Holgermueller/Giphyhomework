@@ -38,12 +38,6 @@
     border-radius: 15px;
 }
 
-.jpeg:hover {
-    -webkit-box-shadow: 6px 6px #ccc;
-    -moz-box-shadow: 6px 6px #ccc;
-    box-shadow: 6px 6px #ccc;
-}
-
 .input {
     margin-top: 2%;
     margin-right: 10%;
@@ -87,7 +81,7 @@ hr {
     display: grid;
     grid-template-columns: auto auto auto;
     grid-column-gap: 2%;
-    grid-row-gap: 2%;
+    grid-row-gap: 5px;
     padding: 10px;
 }
 
@@ -97,9 +91,15 @@ hr {
     border-radius: 15px;
 }
 
+.grid-item:hover {
+    -webkit-box-shadow: 6px 6px #ccc;
+    -moz-box-shadow: 6px 6px #ccc;
+    box-shadow: 6px 6px #ccc;
+}
+
 .faves,
 .animals {
-    margin: 5% 2% 46%;
+    margin: 5% 2%;
 }
 
 .rating {
