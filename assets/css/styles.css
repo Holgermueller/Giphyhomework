@@ -136,3 +136,9 @@ hr {
     background-color: green;
     color: ghostwhite;
 }
+
+.credit {
+  float: right;
+  margin-right: 2px;
+  font-size: 0.75em;
+}
