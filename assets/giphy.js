@@ -64,6 +64,7 @@ $(document).ready(() => {
       });
 
       let faveGifs = JSON.parse(localStorage.getItem('faveGifs')) || [];
+      let placeForFaveGifs = $("#favoriteGifs");
 
       $(document).on('click', '#favorite', function () {
         let id = $(this).data('index');
@@ -83,7 +84,7 @@ $(document).ready(() => {
 
   function populateFaves() {
     let faveGifs = JSON.parse(localStorage.getItem('faveGifs'));
-
+    $("#favoriteGifs").empty();
     $.map(faveGifs, faveGif => {
       let rating = faveGif.rating;
       let still = faveGif.gif;
@@ -108,7 +109,6 @@ $(document).ready(() => {
       $(document).on('click', '#remove', () => {
         $.map(faveGifs, faveGif => {
           console.log(faveGifs);
-          return faveGif;
         });
       });
     }
