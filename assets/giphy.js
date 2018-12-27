@@ -39,7 +39,6 @@ $(document).ready(() => {
                 url: queryURL,
                 method: "GET"
             }).then(response => {
-                console.log(response.data);
                 $("#animals").empty();
                 $.map(response.data, gif => {
                     let gifID = gif.id;
@@ -63,9 +62,12 @@ $(document).ready(() => {
                     imgDIV.append(gifIMG).append(buttonContainer);
                 });
 
-                let gifID = response.data;
+                let faveGifs = JSON.parse(localStorage.getItem('faveGifs')) || [];
                 $(document).on('click', '#favorite', function() {
                     console.log($(this).data('index'));
+                    let faveGif = $(this).data('index');
+                    faveGifs.push(faveGif);
+                    localStorage.setItem('faveGifs', JSON.stringify(faveGifs));
                 });
             });
     });
