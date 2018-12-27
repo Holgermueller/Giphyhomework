@@ -41,39 +41,30 @@ $(document).ready(() => {
                 url: queryURL,
                 method: "GET"
             }).then(response => {
-                //console.log(response);
+                console.log(response);
                 $("#animals").empty();
                 $.map(response.data, gif => {
+                    let gifID = gif.id;
                     //console.log(gif.id);
-                    const animalTemplate = `<div class="grid-item">
-                    <div id="singleGif" data-index="${gif.id}">
-                        <p class="rating"> Rating: ${(gif.rating).toUpperCase()}</p>
-                        <img class="jpeg" data-jpeg_src="${gif.images.downsized_medium.url}" src="${gif.images.downsized_still.url}" alt="gif">
-                    </div>
-                        <div class="button-container">
-                            <a href="${gif.source}" download><button id="download" class="download-button">Download</Button></a>
-                            <input type="submit" id="favorite" class="favorite-button" value="Favorite" onclick="showIndex(this)">
-                        </div>
-                    </div>`;           
-                    $("#animals").append(animalTemplate);
+                    let gridItem = $('<div>').addClass("grid-item");
+                    let imgDIV = $("<div>").addClass("singleGif");
+                    let rating = $(`<p class="rating">Rating: ${(gif.rating).toUpperCase()}</p>`);
+                    let gifIMG = $("<img>").addClass("jpeg").attr('src', gif.images.downsized_still.url).attr('data-jpeg_src', gif.images.downsized_medium.url);
+                    let buttonContainer = $("<div>").addClass("button-container");
+                    let downloadLink = $('<a download>').attr('target', '_blank').attr("href", gif.images.original.url);
+                    let downloadButton = $('<button>').addClass('download-button').text("Download");
+                    let favoriteButton = $("<input type='submit' value='Favorite'>").addClass("favorite-button");
 
-                    let favoriteGifs = JSON.parse(localStorage.getItem('favoriteGifsArray'));
-                    if(!Array.isArray(favoriteGifs)){
-                        favoriteGifs = [];
-                    }
+                    $("#animals").append(gridItem);
+                    $(gridItem).append(imgDIV);
+                    $(imgDIV).append(rating);
+                    downloadLink.append(downloadButton);
+                    buttonContainer.append(downloadLink).append(favoriteButton);
+                    imgDIV.append(gifIMG).append(buttonContainer);
 
-                    function putFavoritesOnPage() {
-                        $('#favorite-gifs').empty();
-                        let checkFavoriteGifsList = JSON.parse(localStorage.getItem('favoriteGifsArray'));
-                        if(!Array.isArray(checkFavoriteGifsList)){
-                            checkFavoriteGifsList = [];
-                        }
-                    }
-
-                    function showIndex(gif) {
-                        let gifIndex = gif.getAttribute("data-index");
-                        console.log(gifIndex);
-                    }
+                    $(document).on('click', '#favorite', () => {
+                        // console.log(response.data);
+                    });
 
                 });
             });
