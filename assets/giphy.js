@@ -93,7 +93,7 @@ $(document).ready(() => {
       let faveDiv = $("<div>").addClass("fave-gif");
       let faveRating = $(`<p class='rating'>Rating: ${rating} </p>`);
       let removeButton = $("<button>").addClass("remove-button")
-        .attr("id", "remove").attr('data-index', gifID).text("Remove");
+        .attr("id", "remove").attr('data-remove_index', gifID).text("Remove");
       let faveStill = $("<img>").addClass("jpeg")
         .attr('src', still)
         .attr('data-jpeg_src');
@@ -106,10 +106,9 @@ $(document).ready(() => {
     });
 
     function removeAFavorite() {
-      $(document).on('click', '#remove', () => {
-        $.map(faveGifs, faveGif => {
-          console.log(faveGifs);
-        });
+      $(document).on('click', '#remove', function() {
+        // let gifToRemove = faveGifs;
+          console.log($(this).data('remove_index'));       
       });
     }
     removeAFavorite();
