@@ -17,3 +17,8 @@ This app makes an AJAX call using an API key provided by GIPHY.
 Technically, yes, but the point of this app is to search for GIFs featuring
 animals. Why would you use this app if you wanted to search for something other than 
 animal GIFs?
+
+## Have a favorite?
+Just click the button labelled 'Favorite', and the gif will be saved to local storage 
+and displayed at the bottom of the app for your viewing pleasure.
+

@@ -64,8 +64,6 @@ $(document).ready(() => {
       });
 
       let faveGifs = JSON.parse(localStorage.getItem('faveGifs')) || [];
-      let placeForFaveGifs = $("#favoriteGifs");
-
       $(document).on('click', '#favorite', function () {
         let id = $(this).data('index');
         let rating = $(this).data('rating');
@@ -85,8 +83,9 @@ $(document).ready(() => {
   function populateFaves() {
     let faveGifs = JSON.parse(localStorage.getItem('faveGifs'));
     $("#favoriteGifs").empty();
+
     $.map(faveGifs, faveGif => {
-      let rating = faveGif.rating;
+      let rating = (faveGif.rating).toUpperCase();
       let still = faveGif.gif;
       let gifID = faveGif.id;
       let gridItem = $('<div>').addClass("grid-item");
@@ -106,9 +105,10 @@ $(document).ready(() => {
     });
 
     function removeAFavorite() {
-      $(document).on('click', '#remove', function() {
-        // let gifToRemove = faveGifs;
-          console.log($(this).data('remove_index'));       
+      $(document).on('click', '#remove', function () {
+        let removalKey = $(this).data('remove_index')
+        console.log(removalKey);
+        localStorage.delete(removalKey);
       });
     }
     removeAFavorite();
