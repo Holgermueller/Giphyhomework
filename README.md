@@ -1,6 +1,18 @@
 # The GIF Menagerie
 An API and AJAX assignment.
 
+## Author:
+Holger Mueller - Everything.
+
+## License:
+This project was licensed under the MIT license. Check out the [MIT link](https://github.com/Holgermueller/TheGIFMenagerie/blob/master/LICENSE)
+
+## Prerequisites and installation
+This project requires not extensions. However, it does require the jQuery
+CDN, which can be obtained here: [jQuery CDN](https://code.jquery.com/)
+It also requires an API key from Giphy, which can be obtained here:
+[Giphy API Key](https://developers.giphy.com/)
+
 ## What it does:
 Click any one of the buttons on the screen to receive a
 selection of GIFs featuring the animal on that buttons name.
@@ -27,3 +39,10 @@ and displayed at the bottom of the app for your viewing pleasure.
 
 ## See a GIF you can't live without?
 Click the download button, and it's yours.
+
+### Acknowledgments
+Though I built this by myself, I couldn't have completed this project without
+the help and mentorship of:
+* Josh Boyan
+* Greg Wallerus
+* Hogan McDonald
