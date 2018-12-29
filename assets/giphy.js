@@ -72,7 +72,7 @@ $(document).ready(() => {
         let id = $(this).data('index');
         let rating = $(this).data('rating');
         let stillGif = $(this).attr('src');
-        let movingGif = $(this).attr('jpeg_src');
+        let movingGif = $(this).data('jpeg_src');
         let faveGif = {
           id,
           rating,
@@ -102,7 +102,7 @@ $(document).ready(() => {
       let faveImg = $("<img alt='img'>").addClass("jpeg")
         .attr('src', stillGif)
         .attr('data-jpeg_src', movingGif);
-        
+
       let buttonContainer = $("<div>").addClass("button-container");
       let removeButton = $("<button>").addClass("remove-button")
         .attr("id", "remove").attr('data-remove_index', gifID).text("Remove");
