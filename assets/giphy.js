@@ -53,7 +53,8 @@ $(document).ready(() => {
         let downloadButton = $('<button>').addClass('download-button').text("Download");
         let favoriteButton = $("<input type='submit' value='Favorite'>")
           .addClass("favorite-button").attr("id", "favorite").attr('data-index', gifID)
-          .attr('data-rating', gifRating).attr('src', gif.images.downsized_still.url);
+          .attr('data-rating', gifRating).attr('src', gif.images.downsized_still.url)
+          .attr('data-jpeg_src', gif.images.downsized_medium.url);
 
         $("#animals").append(gridItem);
         gridItem.append(imgDIV);
@@ -67,10 +68,13 @@ $(document).ready(() => {
         let id = $(this).data('index');
         let rating = $(this).data('rating');
         let stillGif = $(this).attr('src');
+        let movingGif = $(this).attr('jpeg_src');
+        //let stillGif = $.getBase64Image(stillGifData);
         let faveGif = {
           id,
           rating,
-          stillGif
+          stillGif,
+          movingGif
         };
         faveGifs.push(faveGif);
         localStorage.setItem('faveGifs', JSON.stringify(faveGifs));
@@ -94,7 +98,7 @@ $(document).ready(() => {
       let removeButton = $("<button>").addClass("remove-button")
         .attr("id", "remove").attr('data-remove_index', gifID).text("Remove");
       let faveStill = $("<img alt='img'>").addClass("jpeg")
-      //.attr('src', stillGif)
+      .attr('src', stillGif)
       //.attr('data-jpeg_src', );
 
       $("#favoriteGifs").append(gridItem);
