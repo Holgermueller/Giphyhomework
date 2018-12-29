@@ -42,19 +42,23 @@ $(document).ready(() => {
       $.map(response.data, gif => {
         let gifRating = gif.rating;
         let gifID = gif.id;
+        let stillGif = gif.images.downsized_still.url;
+        let movingGif = gif.images.downsized_medium.url;
+
         let gridItem = $('<div>').addClass("grid-item");
-        let imgDIV = $("<div>").addClass("singleGif");
+        let imgDIV = $("<div>").addClass("single-gif");
         let rating = $(`<p class="rating">Rating: ${(gifRating).toUpperCase()}</p>`);
         let gifIMG = $("<img alt='img'>").addClass("jpeg")
-          .attr('src', gif.images.downsized_still.url)
-          .attr('data-jpeg_src', gif.images.downsized_medium.url);
+          .attr('src', stillGif)
+          .attr('data-jpeg_src', movingGif);
+
         let buttonContainer = $("<div>").addClass("button-container");
         let downloadLink = $('<a download>').attr('target', '_blank').attr("href", gif.images.original.url);
         let downloadButton = $('<button>').addClass('download-button').text("Download");
         let favoriteButton = $("<input type='submit' value='Favorite'>")
           .addClass("favorite-button").attr("id", "favorite").attr('data-index', gifID)
-          .attr('data-rating', gifRating).attr('src', gif.images.downsized_still.url)
-          .attr('data-jpeg_src', gif.images.downsized_medium.url);
+          .attr('data-rating', gifRating).attr('src', stillGif)
+          .attr('data-jpeg_src', movingGif);
 
         $("#animals").append(gridItem);
         gridItem.append(imgDIV);
@@ -69,7 +73,6 @@ $(document).ready(() => {
         let rating = $(this).data('rating');
         let stillGif = $(this).attr('src');
         let movingGif = $(this).attr('jpeg_src');
-        //let stillGif = $.getBase64Image(stillGifData);
         let faveGif = {
           id,
           rating,
@@ -88,22 +91,26 @@ $(document).ready(() => {
     $("#favoriteGifs").empty();
 
     $.map(faveGifs, faveGif => {
+      let gifID = faveGif.id;
       let rating = (faveGif.rating).toUpperCase();
       let stillGif = faveGif.stillGif;
-      let gifID = faveGif.id;
-      console.log(stillGif);
+      let movingGif = faveGif.movingGif;
+
       let gridItem = $('<div>').addClass("grid-item");
       let faveDiv = $("<div>").addClass("fave-gif");
       let faveRating = $(`<p class='rating'>Rating: ${rating} </p>`);
+      let faveImg = $("<img alt='img'>").addClass("jpeg")
+        .attr('src', stillGif)
+        .attr('data-jpeg_src', movingGif);
+        
+      let buttonContainer = $("<div>").addClass("button-container");
       let removeButton = $("<button>").addClass("remove-button")
         .attr("id", "remove").attr('data-remove_index', gifID).text("Remove");
-      let faveStill = $("<img alt='img'>").addClass("jpeg")
-      .attr('src', stillGif)
-      //.attr('data-jpeg_src', );
 
       $("#favoriteGifs").append(gridItem);
       gridItem.append(faveDiv);
-      faveDiv.append(faveRating).append(faveGif).append(faveStill).append(removeButton);
+      buttonContainer.append(removeButton);
+      faveDiv.append(faveRating).append(faveGif).append(faveImg).append(buttonContainer);
     });
 
     function removeAFavorite() {
