@@ -1,7 +1,13 @@
 /* Slides */
 .slideshow-section {
-  background-image: url(../images/pexels-photo-145939.jpeg);
   background-size: cover;
+  animation: slideshow 5s infinite;
+}
+
+@keyframes slideshow {
+  0% {background-image: url(../images/tiger.png);}
+  50% {background-image: url(../images/treefrog.png);}
+  100% {background-image: url(../images/turtle.png);}
 }
 
 /* Headers */
