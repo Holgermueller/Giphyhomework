@@ -1,3 +1,7 @@
+/* Slides */
+
+
+/* Headers */
 .header {
     position: fixed;
     color: white;
@@ -19,6 +23,7 @@
     border-radius: 15px;
 }
 
+/* Input form */
 .form-and-buttons {
     text-align: center;
 }
@@ -30,12 +35,6 @@
 .add-an-animal {
     font-style: italic;
     font-weight: bold;
-}
-
-.jpeg {
-    width: 200px;
-    height: 200px;
-    border-radius: 15px;
 }
 
 .input {
@@ -75,6 +74,13 @@ hr {
 
 #animalButtons {
     text-align: center;
+}
+
+/* Areas that hold GIFs */
+.jpeg {
+  width: 200px;
+  height: 200px;
+  border-radius: 15px;
 }
 
 .grid-container {
@@ -127,6 +133,7 @@ hr {
     background-color: aqua;
 }
 
+/* Footer */
 .footer {
     position: fixed;
     text-align: center;
