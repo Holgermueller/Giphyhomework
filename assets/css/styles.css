@@ -1,13 +1,21 @@
 /* Slides */
 .slideshow-section {
   background-size: cover;
-  animation: slideshow 5s infinite;
+  animation: slideshow 50s infinite normal;
 }
 
 @keyframes slideshow {
   0% {background-image: url(../images/tiger.png);}
-  50% {background-image: url(../images/treefrog.png);}
-  100% {background-image: url(../images/turtle.png);}
+  10% {background-image: url(../images/treefrog.png);}
+  20% {background-image: url(../images/turtle.png);}
+  30% {background-image: url(../images/bee.png);}
+  40% {background-image: url(../images/horses.png);}
+  50% {background-image: url(../images/penguins.png);}
+  60% {background-image: url(../images/rhinos.png);}
+  70% {background-image: url(../images/shark.png);}
+  80% {background-image: url(../images/moth.png);}
+  90% {background-image: url(../images/birds.png);}
+  100% {background-image: url(../images/wolf.png);}
 }
 
 /* Headers */
