@@ -37,12 +37,6 @@
     background-color: #79d279;
     font-size: 1.5em;
     padding: 2px;
-    border-radius: 15px;
-}
-
-.search-header {
-    border-top-left-radius: 0 !important;
-    border-top-right-radius: 0 !important;
 }
 
 /* Input form */
@@ -52,7 +46,7 @@
 
 .animal-form {
     padding-top: 12%;
-    margin: 0% 0 2% 2%;
+    margin: 0% 0 2% 7%;
 }
 
 .add-an-animal {
@@ -112,6 +106,18 @@ hr {
 }
 
 /* Areas that hold GIFs */
+.search-results {
+  padding-bottom: 5%;
+  background-image: linear-gradient(#fffafa, #ffdead);
+  bottom: 0;
+}
+
+.favorites {
+  bottom: 0;
+  padding-bottom: 5%;
+  background-image: linear-gradient(#e0ffff, #191170);
+}
+
 .jpeg {
   width: 200px;
   height: 200px;
@@ -137,11 +143,6 @@ hr {
     -webkit-box-shadow: 6px 6px #ccc;
     -moz-box-shadow: 6px 6px #ccc;
     box-shadow: 6px 6px #ccc;
-}
-
-.faves,
-.animals {
-    margin: 5% 2%;
 }
 
 .rating {
