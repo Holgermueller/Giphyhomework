@@ -127,7 +127,7 @@ hr {
 
 .flex-container > div {
   margin: 1%;
-  width: 22%;
+  width: 250px;
   text-align: center;
   background-color:  #f0f0f5;
   border-radius: 15px;
@@ -184,4 +184,39 @@ hr {
   float: right;
   margin-right: 2px;
   font-size: 0.75em;
+}
+
+/* Media Queries */
+@media (width: 768px) {
+  body {
+    width: 100%;
+  } 
+}
+
+@media (width: 414px) {
+  .form-and-buttons {
+    margin-top: 5%;
+  }
+
+  .animal-btn {
+    width: 12%;
+  }
+
+  .favorites {
+    padding-bottom: 5%;
+  }
+}
+
+@media (width: 360%) {
+  .animal-form {
+    margin-top: 26%;
+  }
+
+  .animal-btn {
+    width: 15%;
+  }
+
+  .favorites {
+    padding-bottom: 7%;
+  }
 }
