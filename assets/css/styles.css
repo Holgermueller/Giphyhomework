@@ -207,7 +207,7 @@ hr {
   }
 }
 
-@media (width: 360%) {
+@media (width: 360px) {
   .animal-form {
     margin-top: 26%;
   }
