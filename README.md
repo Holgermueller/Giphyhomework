@@ -40,6 +40,9 @@ and displayed at the bottom of the app for your viewing pleasure.
 ## See a GIF you can't live without?
 Click the download button, and it's yours.
 
+## What if I decide I don't want that GIF in my favorites anymore?
+Well, you're stuck with it for now, until I figure out how to code that functionality.
+
 ### Acknowledgments
 Though I built this by myself, I couldn't have completed this project without
 the help and mentorship of:
