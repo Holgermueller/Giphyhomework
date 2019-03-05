@@ -135,15 +135,22 @@ $(document).ready(() => {
         .append(buttonContainer);
     });
 
-      $(document).on("click", "#remove", function(e) {
-        e.preventDefault();
-        let gifsInStorage = JSON.parse(localStorage["faveGifs"]);
-        
-        $.map(gifsInStorage, gifToDelete => {
-          console.log(gifToDelete)
-        });
-        //localStorage.removeItem();
-      });
+    $(document).on("click", "#remove", function(id) {
+      id.preventDefault();
+      let gifsInStorage = localStorage.getItem("faveGifs")
+        ? JSON.parse(localStorage.getItem("faveGifs"))
+        : [];
+      let index;
+      for (let i = 0; i < gifsInStorage.length; i++) {
+        if (gifsInStorage[i].id === id) {
+          index = i;
+          break;
+        }
+      }
+      gifsInStorage.splice(index, 1);
+      localStorage.setItem("faveGifs", JSON.stringify(faveGifs));
+      //localStorage.removeItem();
+    });
   }
   populateFaves();
 
