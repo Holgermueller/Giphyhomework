@@ -134,25 +134,25 @@ $(document).ready(() => {
         .append(faveImg)
         .append(buttonContainer);
     });
-
-    $(document).on("click", "#remove", function(id) {
-      id.preventDefault();
-      let gifsInStorage = localStorage.getItem("faveGifs")
-        ? JSON.parse(localStorage.getItem("faveGifs"))
-        : [];
-      let index;
-      for (let i = 0; i < gifsInStorage.length; i++) {
-        if (gifsInStorage[i].id === id) {
-          index = i;
-          break;
-        }
-      }
-      gifsInStorage.splice(index, 1);
-      localStorage.setItem("faveGifs", JSON.stringify(faveGifs));
-      //localStorage.removeItem();
-    });
   }
   populateFaves();
+
+  $(document).on("click", "#remove", function(id) {
+    let faveGifs = localStorage.getItem("faveGifs")
+      ? JSON.parse(localStorage.getItem("faveGifs"))
+      : [];
+    let index;
+    for (let i = 0; i < faveGifs.length; i++) {
+      if (faveGifs[i].id === id) {
+        index = i;
+        break;
+      }
+    }
+    if (index === -1) return
+    faveGifs.splice(index, 1);
+    localStorage.setItem("faveGifs", JSON.stringify(faveGifs));
+    populateFaves();
+  });
 
   $(document).on("mouseenter", ".jpeg", function() {
     $(this).data("img_src", $(this).attr("src"));
