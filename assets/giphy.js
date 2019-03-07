@@ -137,12 +137,15 @@ $(document).ready(() => {
   }
   populateFaves();
 
-  $(document).on("click", "#remove", function(faveGif) {
-    let faveGifs =  JSON.parse(localStorage.getItem('faveGifs'));
-    let index = faveGifs.indexOf(faveGif);
-    console.log(index);
+  $(document).on("click", "#remove", function() {
+    let faveGifs = JSON.parse(localStorage.getItem("faveGifs"));
+    let faveGif = faveGifs.map(faveGif => {
+      let id = faveGif.id;
+      console.log(id.indexOf())
+    });
+      
 
-    // faveGifs.splice(id1, 1);
+    // faveGifs.splice(index, 1);
     // localStorage.setItem("faveGifs", JSON.stringify(faveGifs));
     // populateFaves();
   });
